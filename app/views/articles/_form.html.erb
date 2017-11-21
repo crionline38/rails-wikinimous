@@ -1,0 +1,16 @@
+<h1>EDIT</h1>
+<%= form_for @article, :html => {:class => 'x'} do |f| %>
+<div class="md-form">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control'  %>
+</div>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+
+<div id="editor"> <%= @article.content %> </div>
+
+
+  <%= f.submit %>
+<% end %>
+

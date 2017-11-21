@@ -14,3 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require tether
+//= require bootstrap
+//= require mdb
+//= require ace-rails-ap
+//= require data-confirm-modal
+
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+
+    var textarea = $('textarea[name="article[content]"]').hide();
+    editor.getSession().setValue(textarea.val());
+    editor.getSession().on('change', function(){
+    textarea.val(editor.getSession().getValue());
+});

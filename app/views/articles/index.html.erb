@@ -1,0 +1,29 @@
+<div class="container text-center">
+  <p class="h1" >Wikinimous</p>
+  <a href="<%= new_article_path %>" class="btn btn-outline-info waves-effect">Create</a>
+  <section class="section">
+    <div class="row">
+      <ul>
+        <% @articles.each do |article| %>
+          <li>
+            <div class="col-lg-12 col-md-12 mb-r">
+              <div class="card card-cascade">
+                <div class="view gradient-card-header blue-gradient">
+                  <h2 class="h2-responsive mt-3 mb-4"> <%= link_to article.title, article_path(article) %></h2>
+                </div>
+                <div class="card-body text-center">
+                  <p class="card-text"><%= Kramdown::Document.new(article.content).to_html.html_safe %>
+
+                  <%= link_to '<i class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i>'.html_safe, edit_article_path(article)  %>
+                  <%= link_to '<i class="fa fa-trash fa-3x" aria-hidden="true"></i>'.html_safe, article_path(article),
+                  method: :delete,
+                  data: { confirm: "Aare you sure?", commit: 'Sure!',title: "Effacer l'article ?" } %></p>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</div>
